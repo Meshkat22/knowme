@@ -180,7 +180,7 @@ h1 {
 }
 
 .contact-container {
-    background-color: white;
+    background-color: rgb(238, 37, 37);
     padding: 40px;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -799,6 +799,24 @@ body.dark-mode .main-nav {
     background: rgba(33, 33, 33, 0.95);
 }
 
+/* Dark mode styles for contact section */
+body.dark-mode .contact-container {
+    background-color: #1e1e1e;
+    border: 1px solid var(--light-gray);
+}
+
+body.dark-mode #contact .contact-item a {
+    color: var(--primary-color);
+}
+
+body.dark-mode #contact .contact-item a:hover {
+    color: var(--primary-dark);
+}
+
+body.dark-mode .address-line {
+    color: var(--text-color);
+}
+
 body.dark-mode .main-nav a {
     color: var(--text-color);
 }
@@ -879,6 +897,24 @@ body.dark-mode .image-placeholder {
         background-color: rgba(255, 255, 255, 0.05);
         border-color: rgba(255, 255, 255, 0.2);
         color: rgba(255, 255, 255, 0.4);
+    }
+    
+    /* Contact section styles for dark mode system preference */
+    .contact-container {
+        background-color: #1e1e1e;
+        border: 1px solid var(--light-gray);
+    }
+    
+    #contact .contact-item a {
+        color: var(--primary-color);
+    }
+    
+    #contact .contact-item a:hover {
+        color: var(--primary-dark);
+    }
+    
+    .address-line {
+        color: var(--text-color);
     }
     
     /* Ensure company/university names are visible in system preference dark mode */
