@@ -34,22 +34,19 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles - PDF-like fixed positioning and structure */
+/* Header Styles - Positioned at top but not fixed */
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
     padding: 10px 0;
-    position: fixed;
-    top: 48px; /* Fixed position below navigation */
+    position: relative;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 1002;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    min-height: auto;
+    min-height: 160px;
     height: auto;
-    /* Disable transitions that cause movement */
-    transition: none;
 }
 
 /* Disable scroll animation to keep header stationary */
@@ -62,8 +59,8 @@ header.shrink {
 
 /* Keep profile image size consistent */
 header.shrink .profile-image {
-    width: 80px;
-    height: 80px;
+    width: 110px;
+    height: 110px;
 }
 
 /* Keep font sizes consistent */
@@ -91,12 +88,11 @@ header::before {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 15px;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 20px 0 150px; /* Increased left padding to shift everything further right */
 }
 
 .header-left {
@@ -131,8 +127,8 @@ header::before {
 }
 
 .profile-image {
-    width: 100px;
-    height: 100px;
+    width: 530px;
+    height: 530px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid rgba(255, 255, 255, 0.3);
@@ -243,15 +239,14 @@ h1 {
     text-decoration: underline;
 }
 
-/* Section Styles with top padding adjusted for fixed header */
-/* Section styles with consistent top padding to account for fixed header and navigation */
+/* Section Styles with appropriate padding */
 section {
-    padding: 230px 0 60px 0;
+    padding: 60px 0 60px 0;
     background-color: var(--background-color);
     position: relative;
     overflow: hidden;
-    min-height: calc(100vh - 220px); /* Ensure each section takes minimum screen height */
-    scroll-margin-top: 240px; /* For smooth scrolling to sections */
+    min-height: calc(100vh - 60px); /* Ensure each section takes minimum screen height */
+    scroll-margin-top: 60px; /* For smooth scrolling to sections */
 }
 
 .section-title {
@@ -632,66 +627,116 @@ footer {
     font-size: 0.95rem;
 }
 
-/* Navigation Bar - Fixed height and structure */
+/* Navigation Bar - Now between header and footer with toggle functionality */
 .main-nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
-    right: 0;
-    background: rgba(108, 99, 255, 0.95);
-    backdrop-filter: blur(5px);
+    width: 100%;
+    background: rgba(108, 99, 255, 0.1);
+    backdrop-filter: blur(10px);
     z-index: 1001;
-    padding: 8px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    /* Keep navigation dimensions consistent */
-    height: 48px; /* Fixed height */
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    transition: none;
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
 .nav-content {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    justify-content: center;
     width: 100%;
     padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .main-nav ul {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     list-style: none;
     margin: 0;
     padding: 0;
     gap: 30px;
+    width: 100%;
+    justify-content: center;
 }
 
 .main-nav li {
     margin: 0;
+    position: relative;
 }
 
 .main-nav a {
-    color: white;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
-    padding: 5px 10px;
-    border-radius: 4px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    gap: 8px;
+}
+
+.main-nav a i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
 }
 
 .main-nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background-color: rgba(108, 99, 255, 0.2);
+    color: white;
 }
 
+/* Navigation Container - Keeps elements within boundaries */
+.nav-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 1005;
+    pointer-events: none;
+}
+
+.nav-container > * {
+    pointer-events: auto;
+}
+
+/* Navigation Toggle Button - Visible on all screen sizes */
+.nav-toggle {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1004;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.nav-toggle i {
+    font-size: 20px;
+}
+
+.nav-toggle:hover {
+    transform: scale(1.1);
+}
 /* Theme Toggle Button */
 .theme-toggle {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
+    background-color: rgba(108, 99, 255, 0.2);
+    color: var(--primary-color);
     border: none;
     border-radius: 50%;
     width: 36px;
@@ -701,11 +746,7 @@ footer {
     justify-content: center;
     cursor: pointer;
     transition: var(--transition);
-}
-
-.theme-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.3);
-    transform: scale(1.1);
+    margin-left: 20px;
 }
 
 .theme-toggle i {
@@ -713,8 +754,16 @@ footer {
 }
 
 .theme-toggle:hover {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: var(--primary-color);
+    color: white;
     transform: scale(1.1);
+}
+
+/* Main content styles */
+main {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 0 20px;
 }
 
 /* Animation */
@@ -796,7 +845,21 @@ body.dark-mode .social-link:hover {
 }
 
 body.dark-mode .main-nav {
-    background: rgba(33, 33, 33, 0.95);
+    background: rgba(33, 33, 33, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .main-nav a {
+    color: var(--text-color);
+}
+
+body.dark-mode .main-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .nav-toggle {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 /* Dark mode styles for contact section */
@@ -817,18 +880,18 @@ body.dark-mode .address-line {
     color: var(--text-color);
 }
 
-body.dark-mode .main-nav a {
-    color: var(--text-color);
+body.dark-mode .main-nav a i {
+    color: var(--primary-color);
 }
 
-body.dark-mode .main-nav a:hover {
+body.dark-mode .theme-toggle {
     background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary-color);
 }
 
-body.dark-mode .image-placeholder {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.4);
+body.dark-mode .theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 /* Dark Mode Support for System Preference */
@@ -882,15 +945,20 @@ body.dark-mode .image-placeholder {
     }
     
     .main-nav {
-        background: rgba(33, 33, 33, 0.95);
+        background: rgba(33, 33, 33, 0.1);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
     
     .main-nav a {
         color: var(--text-color);
     }
     
+    .main-nav a i {
+        color: var(--primary-color);
+    }
+    
     .main-nav a:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.08);
     }
     
     .image-placeholder {
@@ -917,6 +985,16 @@ body.dark-mode .image-placeholder {
         color: var(--text-color);
     }
     
+    .theme-toggle {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--primary-color);
+    }
+    
+    .theme-toggle:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
     /* Ensure company/university names are visible in system preference dark mode */
     .timeline-content .company {
         color: #fff;
@@ -933,15 +1011,108 @@ body.dark-mode .image-placeholder {
     .header-content {
         padding: 0 15px;
     }
+    
+    main {
+        padding: 0 15px;
+    }
 }
 
 @media screen and (max-width: 992px) {
-    /* Intelligent scaling for mid-size screens */
+    /* Mobile-first navigation with toggle functionality */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: -180px;
+        width: 180px;
+        height: 100vh;
+        background: rgba(108, 99, 255, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1003;
+        padding: 60px 0 20px 0;
+        box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .main-nav.nav-open {
+        left: 0;
+    }
+    
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1004;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .main-nav.nav-open + .nav-toggle {
+        right: 200px;
+    }
+    
+    .nav-content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 20px 15px;
+        gap: 30px;
+        height: 100%;
+        overflow-y: auto;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-nav a {
+        color: white;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .main-nav a i {
+        color: white;
+    }
+    
+    .nav-text {
+        display: inline-block;
+    }
+    
+    .theme-toggle {
+        margin-left: 0;
+        margin-top: auto;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: white;
+    }
+    
+    .theme-toggle:hover {
+        background-color: white;
+        color: var(--primary-color);
+    }
+    
+    /* Maintain core header layout with minor adjustments */
     .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
         gap: 12px;
+        padding: 0 15px;
     }
     
     .header-left {
+        flex-direction: row;
         gap: 12px;
     }
     
@@ -967,15 +1138,16 @@ body.dark-mode .image-placeholder {
     .skill-category {
         padding: 20px 25px;
     }
+    
+    main {
+        padding: 0 15px;
+    }
 }
 
 @media screen and (max-width: 768px) {
     /* Consistent styling with intelligent adaptation for tablets */
     header {
-        top: 48px;
-        padding: 10px 0;
-        min-height: auto;
-        height: auto;
+        min-height: 140px;
     }
     
     /* Maintain core header layout with minor adjustments */
@@ -992,38 +1164,38 @@ body.dark-mode .image-placeholder {
         gap: 12px;
     }
     
-    /* Maintain consistent navigation structure */
+    /* Maintain responsive navigation with toggle functionality */
     .main-nav {
-        padding: 8px 0;
-        height: 48px;
-        display: flex;
-        align-items: center;
+        left: -160px;
+        width: 160px;
+    }
+    
+    .main-nav.nav-open {
+        left: 0;
+    }
+    
+    .main-nav.nav-open + .nav-toggle {
+        right: 180px;
     }
     
     .nav-content {
-        flex-direction: row;
-        gap: 8px;
-        padding: 0 15px;
-        height: 100%;
-        justify-content: space-between;
+        gap: 20px;
+        padding: 15px 10px;
     }
     
-    /* Adjust navigation items for better fit while maintaining style */
     .main-nav ul {
-        gap: 15px;
-        flex-wrap: nowrap;
-        justify-content: center;
+        gap: 12px;
     }
     
     .main-nav a {
-        font-size: 0.85rem;
-        padding: 4px 8px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
     }
     
     /* Intelligent scaling of profile image */
     .profile-image {
-        width: 80px;
-        height: 80px;
+        width: 120px;
+        height: 120px;
     }
     
     header.shrink .profile-image {
@@ -1082,9 +1254,9 @@ body.dark-mode .image-placeholder {
     
     /* Maintain consistent section padding */
     section {
-        padding: 180px 0 60px 0;
-        min-height: calc(100vh - 180px);
-        scroll-margin-top: 200px;
+        padding: 60px 0 60px 0;
+        min-height: calc(100vh - 60px);
+        scroll-margin-top: 60px;
     }
     
     /* Consistent container styling with slight padding adjustment */
@@ -1100,15 +1272,16 @@ body.dark-mode .image-placeholder {
     #contact .contact-item i {
         font-size: 1.2rem;
     }
+    
+    main {
+        padding: 0 15px;
+    }
 }
 
 @media screen and (max-width: 576px) {
     /* Consistent styling with intelligent adaptation for mobile phones */
     header {
-        top: 48px;
-        padding: 10px 0;
-        min-height: auto;
-        height: auto;
+        min-height: 120px;
     }
     
     /* Maintain header layout with vertical stacking for mobile */
@@ -1127,34 +1300,36 @@ body.dark-mode .image-placeholder {
         width: 100%;
     }
     
-    /* Consistent navigation structure */
+    /* Maintain responsive navigation with toggle functionality */
     .main-nav {
-        padding: 8px 0;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        position: fixed;
-        overflow: hidden;
+        left: -140px;
+        width: 140px;
+        padding: 50px 0 15px 0;
+    }
+    
+    .nav-toggle {
+        top: 15px;
+        right: 15px;
+        width: 36px;
+        height: 36px;
+    }
+    
+    .main-nav.nav-open + .nav-toggle {
+        right: 160px;
     }
     
     .nav-content {
-        flex-direction: row;
-        gap: 5px;
-        padding: 0 10px;
-        height: 100%;
-        justify-content: space-between;
+        gap: 15px;
+        padding: 15px 8px;
     }
     
-    /* Maintain navigation items appearance with appropriate scaling */
     .main-nav ul {
-        gap: 8px;
-        flex-wrap: nowrap;
-        justify-content: center;
+        gap: 10px;
     }
     
     .main-nav a {
-        font-size: 0.8rem;
-        padding: 3px 6px;
+        font-size: 0.85rem;
+        padding: 6px 10px;
     }
     
     /* Adjust UI elements proportionally */
@@ -1169,8 +1344,8 @@ body.dark-mode .image-placeholder {
     
     /* Intelligent scaling of profile image */
     .profile-image {
-        width: 70px;
-        height: 70px;
+        width: 110px;
+        height: 110px;
     }
     
     header.shrink .profile-image {
@@ -1191,9 +1366,9 @@ body.dark-mode .image-placeholder {
     
     /* Consistent section padding */
     section {
-        padding: 180px 0 60px 0;
-        min-height: calc(100vh - 180px);
-        scroll-margin-top: 200px;
+        padding: 60px 0 60px 0;
+        min-height: calc(100vh - 60px);
+        scroll-margin-top: 60px;
     }
     
     .section-title {
@@ -1221,10 +1396,20 @@ body.dark-mode .image-placeholder {
     #contact .contact-item i {
         font-size: 1.1rem;
     }
+    
+    main {
+        padding: 0 15px;
+    }
 }
 
 /* Print Styles */
 @media print {
+    /* Print styles for navigation */
+    .main-nav,
+    .nav-toggle {
+        display: none;
+    }
+    
     header,
     footer {
         background: none;
