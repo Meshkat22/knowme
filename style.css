@@ -34,56 +34,52 @@ body {
     padding: 0 20px;
 }
 
-/* Header Styles - Positioned at top but not fixed */
+/* Header Styles - Fixed at top with shrink functionality */
 header {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
-    padding: 10px 0;
-    position: relative;
+    padding: 20px 0;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 1002;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     min-height: 160px;
     height: auto;
+    width: 100%;
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
-/* Disable scroll animation to keep header stationary */
+/* Create space below header so content doesn't get hidden */
+body {
+    margin-top: 160px;
+}
+
+/* Shrink header to 50% size when scrolling */
 header.shrink {
-    /* Keep same dimensions as normal header */
     padding: 10px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    min-height: auto;
+    min-height: 80px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Keep profile image size consistent */
+/* Shrink profile image to 50% size */
 header.shrink .profile-image {
-    width: 110px;
-    height: 110px;
+    width: 115px;
+    height: 115px;
 }
 
-/* Keep font sizes consistent */
+/* Shrink font sizes proportionally */
 header.shrink h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
-/* Keep font sizes consistent */
 header.shrink .title {
-    font-size: 1.1rem;
+    font-size: 0.825rem;
 }
 
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
-    background-size: cover;
-}
-
+/* Adjust header content for proper layout */
 .header-content {
     position: relative;
     display: flex;
@@ -92,7 +88,19 @@ header::before {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding: 0 20px 0 150px; /* Increased left padding to shift everything further right */
+    padding: 0 20px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+/* Adjust header content when shrunk */
+header.shrink .header-content {
+    padding: 0 20px;
+}
+
+.header-left {
+    flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
 .header-left {
