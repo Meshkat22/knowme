@@ -1,0 +1,91 @@
+cv:
+  name: Meshkat Ahmad
+  label: BCI & Neural Signal Processing Researcher
+  email: meshkat22@m.fudan.edu.cn
+  location: Yangpu District, Shanghai, PR China
+  summary: >
+    Graduate researcher in brain–computer interfaces at Fudan University. First-author paper
+    at IEEE ICCET 2026 (Best Presenter Award) on EEG motor imagery decoding with a hybrid
+    CNN–Transformer classifier and GAN-based augmentation. Currently interning at NeuroRevix
+    (Shanghai), building EEG+EMG decoding for a post-stroke hand rehabilitation system.
+
+  sections:
+    Education:
+      - institution: Fudan University
+        location: Shanghai, China
+        url: https://www.fudan.edu.cn/
+        area: Electronic Information (M.Eng.)
+        studyType: M.Eng.
+        start_date: 2022-09
+        end_date: 2026-12
+        highlights:
+          - Focus on Brain–Computer Interfaces and Deep Learning for Neural Signal Processing
+
+      - institution: Nanjing University of Information Science and Technology (NUIST)
+        location: Nanjing, China
+        area: Electronic Information (B.Eng.)
+        studyType: B.Eng.
+        start_date: 2018-09
+        end_date: 2022-06
+        highlights:
+          - Outstanding International Student Award, CIS NUIST (2022)
+
+    Experience:
+      - company: NeuroRevix
+        position: Algorithm Intern — Stroke Rehabilitation BCI
+        location: Shanghai, China
+        start_date: 2026-08
+        end_date: Present
+        highlights:
+          - Developing EEG+EMG hybrid decoding algorithms for a post-stroke hand rehabilitation BCI
+          - Building and benchmarking 4-class gesture classification on multimodal EEG+EMG
+          - Working across data acquisition, preprocessing, model training, and evaluation for clinical translation
+
+      - company: Discovery Education
+        position: STEM Coach
+        location: Shanghai, China
+        start_date: 2024-11
+        end_date: Present
+        highlights:
+          - Conducting hands-on STEM ECA classes at international schools
+
+      - company: Vision50
+        position: Computer Science Teacher
+        location: Shanghai, China
+        start_date: 2025-03
+        end_date: 2025-08
+        highlights:
+          - Taught Python, C++, and Scratch to students aged 8–16
+
+      - company: FFlead
+        position: STEM Teacher (Summer Camp)
+        location: Shanghai, China
+        start_date: 2024-06
+        end_date: 2024-08
+        highlights:
+          - Designed and conducted STEM workshops integrating hands-on experiments
+
+    Publications:
+      - title: "MINDGAN: EEG-Based Motor Imagery Decoding via Hybrid CNN–Transformer with Curriculum GAN Augmentation"
+        authors:
+          - Meshkat Ahmad
+          - Yanqi Huang
+          - Xiaomei Wu
+        publisher: 2026 9th IEEE International Conference on Communication Engineering and Technology (ICCET)
+        releaseDate: 2026-06
+        url: https://ieeexplore.ieee.org/document/11659043
+        summary: Published on IEEE Xplore (pp. 18–24), EI indexed. Best Presenter Award.
+
+    Awards:
+      - title: Best Presenter Award
+        awarder: 9th IEEE International Conference on Communication Engineering and Technology (ICCET 2026)
+        date: 2026
+        location: Guangzhou, China
+
+      - title: Outstanding International Student Award
+        awarder: College of International Students, NUIST
+        date: 2022
+
+      - title: Outstanding Student — Huawei Ascend AI Innovation Bootcamp
+        awarder: Huawei
+        date: 2021
