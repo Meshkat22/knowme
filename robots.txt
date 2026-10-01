@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://meshkat22.github.io/knowme/sitemap.xml
